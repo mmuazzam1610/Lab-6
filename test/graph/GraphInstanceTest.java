@@ -20,7 +20,12 @@ import org.junit.Test;
 public abstract class GraphInstanceTest {
     
     // Testing strategy
-    //   TODO
+    /**
+     *  We're testing with the Graph type being String
+     *  We will test all the instance methods keeping in mind that
+     *  they will be of type String.
+     *  And moreover we will be testing for empty graphs only
+     */
     
     /**
      * Overridden by implementation-specific test classes.
@@ -36,11 +41,35 @@ public abstract class GraphInstanceTest {
     
     @Test
     public void testInitialVerticesEmpty() {
-        // TODO you may use, change, or remove this test
         assertEquals("expected new graph to have no vertices",
                 Collections.emptySet(), emptyInstance().vertices());
     }
     
-    // TODO other tests for instance methods of Graph
+    @Test
+    public void testEmptyVertexAdd() {
+    	assertFalse("expected false", emptyInstance().add("A"));
+    }
+    
+    @Test
+    public void testEmptyVertexSet() {
+    	assertEquals("expected set to return 0 as graph is empty", 0, emptyInstance().set("A", "B", 2));
+    }
+    
+    @Test
+    public void testEmptyRemove() {
+    	assertFalse("expected false as graph is empty", emptyInstance().remove("A"));
+    }
+    
+    @Test
+    public void testEmptySources() {
+    	assertEquals("expected new graph to have no sources",
+    			Collections.emptyMap(), emptyInstance().sources("A"));
+    }
+    
+    @Test
+    public void testEmptyTargets() {
+    	assertEquals("expected new graph to have no targets",
+    			Collections.emptyMap(), emptyInstance().targets("A"));
+    }
     
 }
